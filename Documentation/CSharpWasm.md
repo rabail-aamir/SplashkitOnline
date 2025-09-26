@@ -37,6 +37,7 @@ CSharpWasm/
 | `Properties/AssemblyInfo.cs`     | Assembly Metadata | Marks supported platform as “browser”.|
 | `Properties/launchSettings.json` | Launch Config     | Settings for running/debugging locally in browser.|
 | `runtimeconfig.template.json`    | Runtime Template  | Template for browser runtime behavior.|
+| `bindingGenerator.py`            | Binding Generator | Used to generate the `SplashKitBindings.Generated.cs` file.|
 
 ## Prerequisites
 Before starting the build process you need to verify that you have:
@@ -51,6 +52,8 @@ You can create and distribute the artifacts through the following command which 
 chmod +x buildAndCopy.sh   # first time only
 ./buildAndCopy.sh
 ```
+> **Note for Windows users:** The Unix shell script `buildAndCopy.sh` operates under Unix shell systems. The script requires execution from either WSL (Ubuntu on Windows) or Git Bash/MinGW environments. The script fails to execute properly when run from Command Prompt or PowerShell.  
+You can execute the script through Git Bash by running `bash buildAndCopy.sh`.
 
 This script is responsible for 
 - Building project with `dotnet build`
@@ -59,19 +62,17 @@ This script is responsible for
 
 ## Usage in the Browser
 
-```C#
-Example of JavaScript call:
+You can provide C# code directly to the `CompileAndRun` function. For example:
 
-const code = 
+```csharp
 using System;
+
 class Program {
     static void Main() {
         Console.WriteLine("Hello from C#!");
     }
-};
-    
-const result = await globalThis.CSharpCodeRunner.CompileAndRun(code);
-console.log(result);
+}
+
 ```
 
 ### Output Expected 
