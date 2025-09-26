@@ -39,12 +39,55 @@ Make sure that this is updated, as this is resposible for enabling users to sele
 The Themes system enables runtime modification of CSS variables through its functionality. The available variables exist within the css/colours.css file which you can access for viewing.
 
 ```css
+/* Code editor colours */
 --editorKeyword
 --editorComment
---editorLineNumber
---editorBackgroundColour
---editorString
 --editorGutterBackground
+--editorLineNumber
+--editorFunctionsAndObject
+--editorProperty
+--editorNumber
+--editorSelected
+--editorString
+--editorMeta
+--editorVariable2
+--editorType
+--editorBackgroundColour
+
+/* UI colours */
+--gutterColour
+--disabled
+--errorColour
+--warning
+--activeTabColour
+--nodeConflict
+--languageSelectBackground
+--errorLineBackground
+--transientColour
+
+/* Gutter colours */
 --shadowColour
+--nodeHover
+--fileColour
+--iconHover
+
+/* Terminal colours */
+--terminalBackground
+
+/* Text */
+--primary
+
+/* Demo colours */
+--language
+--tagBackground
+--demoTitleBackground
+--demoThumbnailBackground
+
+/* Loading bar */
+--loadingBackground
+
+/* Fonts */
+--font
+--editorFont
 ```
 
