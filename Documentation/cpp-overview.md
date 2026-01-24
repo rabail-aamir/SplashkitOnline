@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This document gives overview of how in Splashkit Online, code is  compiled and execuded. It describes how user-written C++ code flows from the browser editor to WebAssembly compilation and execution.
+This document gives an overview of how Splashkit Online compiles and executes code. It describes how user-written C++ code flows from the browser editor to WebAssembly compilation and execution.
 
-Main purpse is to help new contributors understand that how the system integrates C++ capability without requiring in-depth compiler knowledge.
+The main purpose is to help new contributors understand how the system integrates C++ capabilities without requiring in-depth compiler knowledge.
 
 ## Where C++ Lives in Repository
 
@@ -19,25 +19,25 @@ Manages the front-end compilation process.
 
 ## Role of CXXCompiler
 
-CXXCompiler class is responsible for managing the C++ complition process. Its responsibilities include:
+The **CXXCompiler** class manages the C++ compilation process. Its responsibilities include:
 
-- Writing source files to virtual filesystem
-- Compile each file of C++ into object files
-- Link object files into final WebAssembly output
-- Provide syntax checking and error reporting
-- Warn users about unsupported API usage
+- Writing source files to the virtual filesystem
+- Compiling each C++ file into object files
+- Linking object files into final WebAssembly output
+- Providing syntax checking and error reporting
+- Warning users about unsupported API usage
 
-It communicates with Web Worker to make sure that main interface doesn't freeze during compilation. 
+It communicates with a Web Worker to ensure the main interface doesn't freeze during compilation.
 
 
 ## Web Workers and Clang Backend
 
 In a Web Worker, the actual compilation process is carried out using:
 
-- **clang++.wasm** Compiles C++ source into object files
-- **wasm-ld.wasm**  Links object files into a final WASM executable
+- **clang++.wasm**: Compiles C++ source into object files
+- **wasm-ld.wasm**: Links object files into a final 
 
-In order to maintain UI responsiveness, this occurs asynchronously.
+This occurs asynchronously to maintain UI responsiveness.
 
 ## Relationship with WebAssembly (WASM)
 
@@ -47,7 +47,7 @@ This method offers:
 
 - Sandboxing for security
 - Compatibility between platforms
-- Execution in real time in a web setting
+- Real-time execution in web environments
 
 ## Execution Environment
 
@@ -63,4 +63,5 @@ The ExecutionEnvironmentInternalCXX class is in charge of this, coordinating com
 
 ## Error Handling and Output
 
-Prior to being displayed to the user, compiler messages undergo processing and formatting. In order to emphasise certain lines and offer insightful terminal feedback, errors are analysed.
+During error handling, compiler messages are processed and formatted before being displayed to the user. 
+This is done to ensure key lines are emphasised and clear terminal feedback is provided through error analysis.
